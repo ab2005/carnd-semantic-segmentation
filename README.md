@@ -2,6 +2,10 @@
 ### Introduction
 In this project, you'll label the pixels of a road in images using a Fully Convolutional Network (FCN).
 
+### Links
+ - [Learning Deconvolution Network for Semantic Segmentation](https://arxiv.org/pdf/1505.04366v1.pdf)
+ - [Training road scene segmentation on Cityscapes with Supervisely, Tensorflow and UNet](https://medium.com/towards-data-science/training-road-scene-segmentation-on-cityscapes-with-supervisely-tensorflow-and-unet-1232314781a8)
+ - [Fully Convolutional Networks for Semantic Segmentation](https://arxiv.org/pdf/1605.06211.pdf) (Submitted on 20 May 2016)
 ### Setup
 ##### Frameworks and Packages
 Make sure you have the following is installed:

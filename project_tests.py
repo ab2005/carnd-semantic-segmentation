@@ -57,8 +57,9 @@ class TmpMock(object):
 
 @test_safe
 def test_load_vgg(load_vgg, tf_module):
+    print ('test_load_vgg')
     with TmpMock(tf_module.saved_model.loader, 'load') as mock_load_model:
-        vgg_path = ''
+        vgg_path = 'data/vgg'
         sess = tf.Session()
         test_input_image = tf.placeholder(tf.float32, name='image_input')
         test_keep_prob = tf.placeholder(tf.float32, name='keep_prob')
@@ -68,11 +69,16 @@ def test_load_vgg(load_vgg, tf_module):
 
         input_image, keep_prob, vgg_layer3_out, vgg_layer4_out, vgg_layer7_out = load_vgg(sess, vgg_path)
 
+        # print ('>input_image:', input_image)
+        # print ('>keep_prob:', keep_prob)
+        # print ('>layer3_out:', vgg_layer3_out)
+        # print ('>layer4_out:', vgg_layer4_out)
+        # print ('>layer7_out:', vgg_layer7_out)
+
         assert mock_load_model.called, \
             'tf.saved_model.loader.load() not called'
         assert mock_load_model.call_args == mock.call(sess, ['vgg16'], vgg_path), \
             'tf.saved_model.loader.load() called with wrong arguments.'
-
         assert input_image == test_input_image, 'input_image is the wrong object'
         assert keep_prob == test_keep_prob, 'keep_prob is the wrong object'
         assert vgg_layer3_out == test_vgg_layer3_out, 'layer3_out is the wrong object'
